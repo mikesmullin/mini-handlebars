@@ -1,7 +1,7 @@
 # Why MiniHandleBars?
 
  * [82% Faster](http://jsperf.com/handlebars-vs-mini-handlebars/4) than the official library compiling from markup to html
- * 93% smaller file with just [73 lines](https://github.com/mikesmullin/mini-handlebars/blob/production/js/mini-handlebars.js) or [1.21KB minified (662 bytes gzipped)](https://raw.github.com/mikesmullin/mini-handlebars/production/js/mini-handlebars.min.js)
+ * 93% smaller file with just [73 lines](https://github.com/mikesmullin/mini-handlebars/blob/production/js/mini-handlebars.js) or [1.22KB minified (669 bytes gzipped)](https://raw.github.com/mikesmullin/mini-handlebars/production/js/mini-handlebars.min.js)
  * a TON more flexible; blocks are just javascript functions that take any number of arguments, and like express/sinatra we make no assumptions about which ones you want.
  * NO [dependencies](https://github.com/mikesmullin/mini-handlebars/blob/production/package.json)
 
@@ -34,9 +34,9 @@ handlebars = new MiniHandlebars
           out += handlebars.render template, _data
       out
 
-# note that blocks and variables are written
-# the same; without the additional pound (#).
-# also, this is how i cache the templates in js.
+# note that blocks and variables can be written
+# the same; the additional pound (#) is optional.
+# this is how i cache the templates in js:
 handlebars.templates['test'] = '<!doctype html><html><head></head><body><p>Hello, {{name}}!</p><p>Here are your Christmas lists ({{santa_laugh}}):</p><table><thead><tr>{{each children, name}}<th>{{name}}</th>{{/each}}</tr></thead><tbody><tr>{{each children, name}}<td>{{each list}}<ul><li>{{this}}</li></ul>{{/each}}</td>{{/each}}</tr></tbody></table></body></html>'
 
 # this will compile html output.
@@ -60,4 +60,4 @@ Or try it immediately in your browser with [codepen](http://codepen.io/mikesmull
 TODO
 ----
 
-* add support for triple bracket non-escaped markup? i just haven't needed it, yet. its all unescaped by default.
+* add support for triple-stach/escaping utils? i just haven't needed it, yet. its all unescaped by default.

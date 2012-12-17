@@ -17,15 +17,15 @@
     toks = [];
     tok_map = {};
     d = h._extend(this.options.locals, d);
-    t.replace(/\{\{(\/\w+|\w+)( [\w, ]+)?\}\}\s*/g, function() {
+    t.replace(/\{\{(\/\w+|#?\w+)( [\w, ]+)?\}\}\s*/g, function() {
       var block, close_func, level, name, tok;
       close_func = arguments[1][0] === '/';
       tok = {
         match: arguments[0],
-        name: name = close_func ? arguments[1].slice(1) : arguments[1],
         block: block = typeof arguments[2] === 'string',
         args: (block && arguments[2].replace(/(^ +| +$)/, '').split(/, */)) || [],
         variable: block === close_func,
+        name: name = block === close_func ? arguments[1] : arguments[1][0] === '/' || arguments[1][0] === '#' ? arguments[1].slice(1) : arguments[1],
         level: level = (block === close_func && lvl) || (block && lvl++) || (close_func && --lvl),
         key: level + '.' + name,
         position: arguments[3]

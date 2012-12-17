@@ -10,14 +10,14 @@ not ((context, definition) ->
   # main render function
   h.prototype.render = (t, d) ->
     lvl = 1; toks = []; tok_map = {}; d = h._extend @options.locals, d
-    t.replace `/\{\{(\/\w+|\w+)( [\w, ]+)?\}\}\s*/g`, ->
+    t.replace `/\{\{(\/\w+|#?\w+)( [\w, ]+)?\}\}\s*/g`, ->
       close_func = arguments[1][0] is '/'
       tok =
         match: arguments[0]
-        name: name = if close_func then arguments[1].slice(1) else arguments[1]
         block: block = typeof arguments[2] is 'string' # a block must take arguments
         args: (block and arguments[2].replace(/(^ +| +$)/, '').split(/, */)) or []
         variable: block is close_func # when both are false; can never both be true
+        name: name = if block is close_func then arguments[1] else if arguments[1][0] is '/' or arguments[1][0] is '#' then arguments[1].slice(1) else arguments[1]
         level: level = (block is close_func and lvl) or (block and lvl++) or (close_func and --lvl)
         key: level+'.'+name
         position: arguments[3]
