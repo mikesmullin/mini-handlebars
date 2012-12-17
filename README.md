@@ -1,22 +1,24 @@
-# Why MiniHandleBars?
+# Why MiniHandlebars?
 
- * [82% Faster](http://jsperf.com/handlebars-vs-mini-handlebars/4) than the official library compiling from markup to html
- * 93% smaller file with just [73 lines](https://github.com/mikesmullin/mini-handlebars/blob/production/js/mini-handlebars.js) or [1.22KB minified (669 bytes gzipped)](https://raw.github.com/mikesmullin/mini-handlebars/production/js/mini-handlebars.min.js)
+ * [~82% faster](http://jsperf.com/handlebars-vs-mini-handlebars/4) than the official library compiling from markup to html on chrome/v8
+ * 93.72% smaller file with just [59 lines](https://github.com/mikesmullin/mini-handlebars/blob/production/js/mini-handlebars.js) or [1.1KB minified (639 bytes gzipped)](https://raw.github.com/mikesmullin/mini-handlebars/production/js/mini-handlebars.min.js)
  * a TON more flexible; blocks are just javascript functions that take any number of arguments, and like express/sinatra we make no assumptions about which ones you want.
  * NO [dependencies](https://github.com/mikesmullin/mini-handlebars/blob/production/package.json)
 
-Inspired by [coffeecup](https://github.com/gradus/coffeecup),
- [async2](https://github.com/mikesmullin/async2),
- [handlebars](http://handlebarsjs.com/), and
+Inspired by
+ [handlebars](http://handlebarsjs.com/),
+ [mini-coffeecup](https://github.com/mikesmullin/mini-coffeecup),
+ [async2](https://github.com/mikesmullin/async2), and
  [stylus](http://learnboost.github.com/stylus/) libraries.
 
 
 ## Quick Example
 
 ```coffeescript
-# this line is how you do it in node
+# this line is only required within node
 MiniHandlebars = require 'mini-handlebars'
-# but isn't required in the browser
+
+# initialize new engine
 handlebars = new MiniHandlebars
   locals:
     santa_laugh: 'Ho, ho, ho!'
