@@ -1,0 +1,36 @@
+{
+  "name": "mini-handlebars",
+  "version": "0.1.1",
+  "description": "Minimalist Handlebars.js",
+  "main": "js/mini-handlebars.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "pretest": "coffee --bare -o js coffee/mini-handlebars.coffee",
+    "test": "mocha --reporter spec --bail --ui bdd --colors --timeout 10000 --compilers coffee:coffee-script --require coffee-script --require test/helpers.coffee test/test.coffee"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mikesmullin/mini-handlebars.git"
+  },
+  "keywords": [
+    "handlebars",
+    "mustache",
+    "template",
+    "library",
+    "node.js",
+    "node",
+    "javascript",
+    "better",
+    "minimalist",
+    "improved",
+    "alternative"
+  ],
+  "author": "Mike Smullin <mike@smullindesign.com>",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "chai": "~1.4.0"
+  }
+}
